@@ -14,6 +14,7 @@ jobs:
       - run: mkdir ../temp/manual-mirroring-target
       - run: cp -a . ../temp/copy
       - run: rm -fr ../temp/copy/.git
+      - run: rm -fr ../temp/copy/.github
       - run: ls -a ../temp/copy
       - uses: MrSquaare/ssh-setup-action@v1
         with:
