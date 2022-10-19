@@ -17,6 +17,7 @@ jobs:
       - run: cp -a . ../temp/copy
       - run: cd ../temp/copy
       - run: rm -fr .git
+      - run: ls -a
       - run: pwd
       - run: cd ..
       - run: pwd
