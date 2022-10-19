@@ -12,4 +12,8 @@ jobs:
       - run: ls
       - run: whoami
       - run: pwd
+      - run: touch test.txt
       - run: git status
+      - run: git add .
+      - run: git commit -m "test"
+      - run: git push
