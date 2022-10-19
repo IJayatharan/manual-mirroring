@@ -15,15 +15,11 @@ jobs:
       - run: mkdir ../temp
       - run: mkdir ../temp/copy
       - run: cp -a . ../temp/copy
-      - run: cd ../temp/copy
-      - run: rm -fr .git
-      - run: ls -a
-      - run: pwd
-      - run: cd ..
-      - run: pwd
+      - run: rm -fr ../temp/copy/.git
+      - run: ls -a ../temp/copy
       - uses: MrSquaare/ssh-setup-action@v1
         with:
           host: github.com
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git
-      - run: ls -a 
+      - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git ../temp/manual-mirroring-target/.
+      - run: ls -a ../temp/manual-mirroring-target
