@@ -17,5 +17,8 @@ jobs:
       - run: cp -a . ../temp/copy
       - run: cd ../temp/copy
       - run: rm -fr .git
-      - run: ls -a
-      
+      - run: cd ..
+      - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git
+      - run: cp -a ./copy/. ./manual-mirroring-target
+      - run: cd ./manual-mirroring-target
+      - run: ls -a      
