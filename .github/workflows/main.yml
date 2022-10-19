@@ -21,7 +21,7 @@ jobs:
       - uses: MrSquaare/ssh-setup-action@v1
         with:
           host: github.com
-          private-key: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git
       - run: cp -a ./copy/. ./manual-mirroring-target
       - run: cd ./manual-mirroring-target
