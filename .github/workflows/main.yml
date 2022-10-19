@@ -18,6 +18,7 @@ jobs:
       - run: cd ../temp/copy
       - run: rm -fr .git
       - run: cd ..
+      - run: pwd
       - uses: MrSquaare/ssh-setup-action@v1
         with:
           host: github.com
