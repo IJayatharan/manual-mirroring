@@ -25,8 +25,9 @@ jobs:
       - run: cp -a ../temp/copy/. ../temp/target
       - name: Remove old files from repository
         working-directory: ../temp/target
-        run: rm -rfv !".git"
-        run: ls -a
+        run: |
+          rm -rfv !".git"
+          ls
       - run: git config --global user.email "indran@calcey.com"
       - run: git config --global user.name "IJayatharan"
       - name: Push code to target directory
