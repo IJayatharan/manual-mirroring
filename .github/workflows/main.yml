@@ -12,6 +12,8 @@ jobs:
       - run: ls
       - run: whoami
       - run: pwd
+      - run: mkdir ../temp
+      - run: mkdir ../temp/copy
       - run: cp -a . ../temp/copy
       - run: cd ../temp/copy
       - run: rm -fr .git
