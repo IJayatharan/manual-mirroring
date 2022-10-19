@@ -10,6 +10,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: echo running on branch ${GITHUB_REF##*/}
+      - run: echo ${{ github.event.head_commit.message }}
       - run: mkdir ../temp
       - run: mkdir ../temp/copy
       - run: mkdir ../temp/target
@@ -33,5 +34,5 @@ jobs:
           git checkout ${GITHUB_REF##*/} || git checkout -b ${GITHUB_REF##*/}
           git status
           git add .
-          git commit -m "Test"
+          git commit -m "${{ github.event.head_commit.message }}" 
           git push || git push --force || git push --set-upstream origin ${GITHUB_REF##*/}
