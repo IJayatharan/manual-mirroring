@@ -29,7 +29,8 @@ jobs:
       - name: Push code to target directory
         working-directory: ../temp/manual-mirroring-target
         run: |
+          git checkout ${GITHUB_REF##*/} || git checkout -b ${GITHUB_REF##*/}
           git status
           git add .
           git commit -m "Test"
-          git push --force
+          git push || git push --force || git push --set-upstream origin ${GITHUB_REF##*/}
