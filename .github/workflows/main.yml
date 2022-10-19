@@ -22,12 +22,10 @@ jobs:
           host: github.com
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: git clone ${{secrets.GIT_REPOSITORY_SSH_LINK}} ../temp/target/.
-      - run: cp -a ../temp/copy/. ../temp/target
       - name: Remove old files from repository
         working-directory: ../temp/target
-        run: |
-          rm -rfv *
-          ls
+        run: rm -rfv *
+      - run: cp -a ../temp/copy/. ../temp/target
       - run: git config --global user.email "indran@calcey.com"
       - run: git config --global user.name "IJayatharan"
       - name: Push code to target directory
