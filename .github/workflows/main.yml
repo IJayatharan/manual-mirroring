@@ -36,4 +36,4 @@ jobs:
           git status
           git add .
           git commit -m "${{ github.event.head_commit.message }}" || echo nothing to commit
-          git push || git push --force || git push --set-upstream origin ${GITHUB_REF##*/} || echo nothing to push
+          git push || git push --force || git push --set-upstream origin ${GITHUB_REF##*/}
