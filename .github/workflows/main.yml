@@ -23,6 +23,4 @@ jobs:
           host: github.com
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git
-      - run: cp -a ./copy/. ./manual-mirroring-target
-      - run: cd ./manual-mirroring-target
-      - run: ls -a      
+      - run: ls      
