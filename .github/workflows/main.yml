@@ -12,25 +12,25 @@ jobs:
       - run: echo running on branch ${GITHUB_REF##*/}
       - run: mkdir ../temp
       - run: mkdir ../temp/copy
-      - run: mkdir ../temp/manual-mirroring-target
+      - run: mkdir ../temp/target
       - run: cp -a . ../temp/copy
       - run: rm -fr ../temp/copy/.git
       - run: rm -fr ../temp/copy/.github
-      - run: ls -a ../temp/copy
       - uses: MrSquaare/ssh-setup-action@v1
         with:
           host: github.com
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git ../temp/manual-mirroring-target/.
-      - run: cp -a ../temp/copy/. ../temp/manual-mirroring-target
-      - run: ls -a ../temp/manual-mirroring-target
+      - run: git clone ${{secrets.GIT_REPOSITORY_SSH_LINK}} ../temp/target/.
+      - run: cp -a ../temp/copy/. ../temp/target
+      - name: Remove old files from repository
+        working-directory: ../temp/target
+        run: rm -rfv !".git"
       - run: git config --global user.email "indran@calcey.com"
       - run: git config --global user.name "IJayatharan"
       - name: Push code to target directory
-        working-directory: ../temp/manual-mirroring-target
+        working-directory: ../temp/target
         run: |
           git checkout ${GITHUB_REF##*/} || git checkout -b ${GITHUB_REF##*/}
-          git pull
           git status
           git add .
           git commit -m "Test"
