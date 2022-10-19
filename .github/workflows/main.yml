@@ -21,6 +21,7 @@ jobs:
       - uses:  actions/checkout@v2
         with:
           repository: IJayatharan/manual-mirroring-target
+          path: './manual-mirroring-target'
       - run: cp -a ./copy/. ./manual-mirroring-target
       - run: cd ./manual-mirroring-target
       - run: ls -a      
