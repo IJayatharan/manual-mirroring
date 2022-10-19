@@ -27,3 +27,5 @@ jobs:
         working-directory: ../temp/manual-mirroring-target
         run: |
           git status
+          git add .
+          git commit -m "Test"
