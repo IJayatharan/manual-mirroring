@@ -26,11 +26,13 @@ jobs:
       - name: Remove old files from repository
         working-directory: ../temp/target
         run: rm -rfv !".git"
+        run: ls -a
       - run: git config --global user.email "indran@calcey.com"
       - run: git config --global user.name "IJayatharan"
       - name: Push code to target directory
         working-directory: ../temp/target
         run: |
+          ls
           git checkout ${GITHUB_REF##*/} || git checkout -b ${GITHUB_REF##*/}
           git status
           git add .
