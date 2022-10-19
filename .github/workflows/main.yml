@@ -12,7 +12,7 @@ jobs:
       - run: ls
       - run: whoami
       - run: pwd
-      - run: cp . /home/temp
+      - run: cp -a . /home/temp
       - run: cd /home/temp
       - run: rm -fr .git
       - run: ls -a
