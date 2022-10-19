@@ -9,9 +9,6 @@ jobs:
       - uses:  actions/checkout@v2
         with:
           fetch-depth: 0
-      - run: ls
-      - run: whoami
-      - run: pwd
       - run: mkdir ../temp
       - run: mkdir ../temp/copy
       - run: mkdir ../temp/manual-mirroring-target
@@ -23,4 +20,5 @@ jobs:
           host: github.com
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git ../temp/manual-mirroring-target/.
+      - run: cp -a ../temp/copy/. ../temp/manual-mirroring-target
       - run: ls -a ../temp/manual-mirroring-target
