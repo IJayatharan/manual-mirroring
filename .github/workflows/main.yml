@@ -26,7 +26,7 @@ jobs:
       - name: Remove old files from repository
         working-directory: ../temp/target
         run: |
-          rm -r !".git"
+          rm -rfv *
           ls
       - run: git config --global user.email "indran@calcey.com"
       - run: git config --global user.name "IJayatharan"
