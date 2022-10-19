@@ -18,7 +18,9 @@ jobs:
       - run: cd ../temp/copy
       - run: rm -fr .git
       - run: cd ..
-      - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git -key ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
+      - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git
+        env:
+          SSH_KET: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
       - run: cp -a ./copy/. ./manual-mirroring-target
       - run: cd ./manual-mirroring-target
       - run: ls -a      
