@@ -17,6 +17,7 @@ jobs:
       - run: cp -a . ../temp/copy
       - run: cd ../temp/copy
       - run: rm -fr .git
+      - run: pwd
       - run: cd ..
       - run: pwd
       - uses: MrSquaare/ssh-setup-action@v1
@@ -24,4 +25,4 @@ jobs:
           host: github.com
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git
-      - run: ls      
+      - run: ls -a 
