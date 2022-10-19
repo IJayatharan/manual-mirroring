@@ -18,8 +18,8 @@ jobs:
       - run: cd ../temp/copy
       - run: rm -fr .git
       - run: cd ..
-      uses: MrSquaare/ssh-setup-action@v1
-      with:
+      - uses: MrSquaare/ssh-setup-action@v1
+        with:
           host: github.com
           private-key: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
       - run: git clone git@github.com:IJayatharan/manual-mirroring-target.git
