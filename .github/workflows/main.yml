@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: echo running on branch ${GITHUB_REF##*/}
-      - run: echo ${{ github.event.head_commit.message }}
+      - run: echo "${{ github.event.head_commit.message }}"
       - run: mkdir ../temp
       - run: mkdir ../temp/copy
       - run: mkdir ../temp/target
