@@ -1,6 +1,7 @@
 name: Mirroring
 
-on: [push]
+on: [push, pull_request]
+
 
 jobs:
   repo-copying:
