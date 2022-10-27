@@ -1,4 +1,4 @@
-name: Mirroring
+name: Mirroring repository
 
 on: 
   push:
@@ -17,23 +17,32 @@ jobs:
           fetch-depth: 0
       - run: echo running on branch ${GITHUB_REF##*/}
       - run: echo "${{ github.event.head_commit.message }}"
-      - run: mkdir ../temp
+      # making temporary directories for copy the repository files
+      - run: mkdir ../temp 
       - run: mkdir ../temp/copy
       - run: mkdir ../temp/target
-      - run: cp -a . ../temp/copy
+      # copying all the files from current repository to temporary folder
+      - run: cp -a . ../temp/copy 
+      # deleting .git and .github folders from the copied directory
       - run: rm -fr ../temp/copy/.git
       - run: rm -fr ../temp/copy/.github
-      - uses: MrSquaare/ssh-setup-action@v1
+      # set the ssh key to the current workflow instance
+      - uses: MrSquaare/ssh-setup-action@v2
         with:
           host: github.com
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      # clone the target repository
       - run: git clone ${{secrets.GIT_REPOSITORY_SSH_LINK}} ../temp/target/.
+      # removing all the files from the target repository other than hidden files (.git is a hidden file)
       - name: Remove old files from repository
         working-directory: ../temp/target
         run: rm -rfv *
+      # copy all the files from copied repository folder to target repository folder
       - run: cp -a ../temp/copy/. ../temp/target
+      # adding global configurations for github user.email & user.name
       - run: git config --global user.email "indran@calcey.com"
       - run: git config --global user.name "IJayatharan"
+      # pushing changes to target repository
       - name: Push code to target directory
         working-directory: ../temp/target
         run: |
